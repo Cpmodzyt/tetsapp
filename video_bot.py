@@ -2,9 +2,8 @@ import os
 import requests
 from telegram import Update, Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from .config import TELEGRAM_BOT_TOKEN
 
-# Telegram bot token (get it from @BotFather)
-TELEGRAM_BOT_TOKEN = '7641758752:AAE_DzNEUf8lZWxgEgJ3omvH45G7ARDQs5Q'
 bot = Bot(token=TELEGRAM_BOT_TOKEN)
 
 def start(update: Update, context: CallbackContext) -> None:
@@ -39,7 +38,7 @@ def handle_message(update: Update, context: CallbackContext) -> None:
     else:
         update.message.reply_text("Failed to download video. Please check the link.")
 
-def main() -> None:
+def start_bot() -> None:
     """Starts the bot."""
     updater = Updater(TELEGRAM_BOT_TOKEN)
     
@@ -51,6 +50,3 @@ def main() -> None:
     # Start the bot
     updater.start_polling()
     updater.idle()
-
-if __name__ == '__main__':
-    main()
